@@ -11,6 +11,13 @@ extern "C" {
 #include <cstring>
 #include <vector>
 
+#if !CONFIG_FREERTOS_USE_TRACE_FACILITY
+#error "CONFIG_FREERTOS_USE_TRACE_FACILITY must be enabled to use core_load component"
+#endif
+#if !CONFIG_FREERTOS_GENERATE_RUN_TIME_STATS
+#error "CONFIG_FREERTOS_GENERATE_RUN_TIME_STATS must be enabled to use core_load component"
+#endif
+
 namespace core_load {
 
 class CoreLoadSensorsRTOS : public esphome::PollingComponent {
